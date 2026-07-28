@@ -17,11 +17,18 @@ nothing uploaded anywhere.
 | **[transcriber](skills/transcriber/SKILL.md)** | Otter.ai | $16.99/mo | unlimited local transcription, no 1,200-minute cap |
 | **[designer](skills/designer/SKILL.md)** | Canva Pro | $18/mo | HTML + headless Chrome renders any graphic to PNG |
 | **[image-jobs](skills/image-jobs/SKILL.md)** | Photoshop | $22.99/mo | the four things you actually opened Photoshop for |
+| **[n8n-local](skills/n8n-local/SKILL.md)** | n8n Cloud / Zapier | $20-49/mo | self-host the automation platform and have Claude build the workflows |
+| **[recorder](skills/recorder/SKILL.md)** | Loom | $12.50/seat/mo | screen recording with a local transcript and a shareable page |
+| **[pdf](skills/pdf/SKILL.md)** | Adobe Acrobat | $22.99/mo | merge, split, rotate, compress, extract text, images to PDF |
 
-That's **$186.47/month** of software — $2,237.64/year — at $0.
+That's **$198.46/month** of software — $2,381.52/year — at $0.
 
 Those are each tool's *cheapest* advertised rate; several cost considerably more
-month-to-month (Photoshop is $34.49, Zapier is $73.50). Prices verified July 2026.
+month-to-month (Photoshop is $34.49, Zapier is $73.50, Grammarly is $30). Where a tool
+has a range I used the low end, and `listing-videos` is left out of the total entirely
+because it's billed per video. Prices verified July 2026.
+
+**New here?** Read [START-HERE.md](START-HERE.md) — one paste and everything is set up.
 
 ---
 
