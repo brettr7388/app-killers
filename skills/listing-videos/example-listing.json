@@ -1,0 +1,15 @@
+{
+  "address": "1420 Maple Ridge Ln",
+  "city": "Orlando, FL 32801",
+  "price": "$660,000",
+  "specs": "4 bed  ·  3 bath  ·  2,940 sqft",
+  "agent": {"name": "Jordan Reyes", "phone": "(555) 010-4477", "brokerage": "Cedar & Oak Realty"},
+  "orientation": "vertical",
+  "seconds_per_shot": 3.0,
+  "shots": [
+    {"file": "photos/01.jpg", "motion": "in", "label": "Welcome home"},
+    {"file": "photos/02.jpg", "motion": "left"},
+    {"file": "photos/03.jpg", "motion": "in", "label": "Chef's kitchen"},
+    {"file": "photos/04.jpg", "motion": "out"}
+  ]
+}

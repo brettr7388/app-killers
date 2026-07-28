@@ -56,7 +56,7 @@ their own audio, and a silent file lets the agent add a trending sound.
 
 ```json
 "music": "music.mp3"                            // bed at 42%, fades out over the last 2.5s
-"narration": "Welcome to 11926 Verrazano Drive."  // TTS voiceover; ducks music to 16%
+"narration": "Welcome to 1420 Maple Ridge Lane."  // TTS voiceover; ducks music to 16%
 "voice": "en-US-AriaNeural"
 ```
 

@@ -1,0 +1,20 @@
+{
+  "title": "The City That Vanished In A Day",
+  "voice": "en-US-GuyNeural",
+  "rate": "-8%",
+  "beats": [
+    {
+      "text": "In seventy nine AD, a Roman city went to sleep and never woke up.",
+      "query": "Pompeii ruins"
+    },
+    {
+      "text": "Vesuvius had been quiet for generations, so nobody read the tremors as a warning.",
+      "query": "Mount Vesuvius eruption painting"
+    },
+    {
+      "text": "The ash fell for eighteen hours before the mountain finally collapsed.",
+      "query": "Pompeii plaster cast body"
+    }
+  ],
+  "contact": "you@youremail.com"
+}

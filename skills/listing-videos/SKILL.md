@@ -63,8 +63,8 @@ costs seconds; reordering after rendering costs a rebuild.
 
 ```json
 {
-  "address": "11926 Verrazano Dr",
-  "city": "Orlando, FL 32836",
+  "address": "1420 Maple Ridge Ln",
+  "city": "Orlando, FL 32801",
   "price": "$660,000",
   "specs": "4 bed  ·  3 bath  ·  2,940 sqft",
   "agent": {"name": "...", "phone": "...", "brokerage": "..."},

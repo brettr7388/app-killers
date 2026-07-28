@@ -5,11 +5,11 @@
 
 listing.json:
 {
-  "address": "11926 Verrazano Dr",
+  "address": "1420 Maple Ridge Ln",
   "city": "Orlando, FL",
   "price": "$660,000",
   "specs": "4 bed  ·  3 bath  ·  2,940 sqft",
-  "agent": {"name": "Debbi Jones", "phone": "(407) 555-0142", "brokerage": "Keller Williams"},
+  "agent": {"name": "Jordan Reyes", "phone": "(555) 010-4477", "brokerage": "Cedar & Oak Realty"},
   "orientation": "vertical",           // or "horizontal"
   "seconds_per_shot": 3.2,
   "music": "optional/path/to/music.mp3",
