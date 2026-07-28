@@ -9,7 +9,6 @@
     python3 pdftool.py compress in.pdf -o out.pdf
     python3 pdftool.py images  a.jpg b.png -o out.pdf
     python3 pdftool.py info    in.pdf
-    python3 pdftool.py ui                               # localhost:7311
 
 Nothing is uploaded. Originals are never modified.
 Needs: pip install pypdf pillow
@@ -174,10 +173,6 @@ def main():
         sys.exit(__doc__)
     cmd, argv = sys.argv[1], sys.argv[2:]
     files = [a for a in argv if not a.startswith("-") and os.path.exists(a)]
-
-    if cmd == "ui":
-        import ui  # noqa: F401  (ui.py sits next to this file)
-        return ui.main()
 
     if cmd in ("merge", "images") and len(files) < 2:
         sys.exit(f"{cmd} needs at least 2 input files")

@@ -26,8 +26,19 @@ command -v whisper || echo "use python3 -m whisper"
 ## Transcribe
 
 ```bash
-whisper INPUT --model tiny.en --word_timestamps True \
-  --output_format json --output_dir ./out --language en
+python3 scripts/transcribe.py recording.m4a              # -> recording.md
+python3 scripts/transcribe.py interview.mp4 --speakers   # guess speaker turns
+python3 scripts/transcribe.py hard-audio.wav --model small.en
+```
+
+It writes a markdown file next to the source: a summary (via `claude -p` if the CLI
+is installed), the transcript broken into paragraphs at topic changes, and a
+timestamp on every paragraph.
+
+Under the hood that's:
+
+```bash
+whisper INPUT --model tiny.en --output_format json --output_dir ./out
 ```
 
 `tiny.en` is ~10× faster than `small.en` and accurate enough for English speech. For

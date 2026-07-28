@@ -12,6 +12,18 @@ app, no subscription, no export limits, and it's fully scriptable.
 
 ## Render
 
+Write the HTML, then:
+
+```bash
+python3 scripts/render.py page.html out.png --size youtube
+python3 scripts/render.py page.html out.png --size 1600x900
+```
+
+Presets: `youtube` `x` `square` `story` `reel` `pin` `og`. It also writes
+`out_thumb.png` at 400px wide — **look at that one**, always.
+
+Under the hood:
+
 ```bash
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
   --headless=new --disable-gpu --hide-scrollbars \

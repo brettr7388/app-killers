@@ -19,6 +19,19 @@ pip3 install --user --break-system-packages rembg   # only for background remova
 
 ## The four jobs
 
+```bash
+python3 scripts/imgtool.py info      photos/
+python3 scripts/imgtool.py resize    photos/ --width 1080
+python3 scripts/imgtool.py convert   photos/ --to webp
+python3 scripts/imgtool.py watermark photos/ --text "© Your Name" --pos br
+python3 scripts/imgtool.py bgremove  photos/
+```
+
+Everything lands in `photos/out/`. Non-image files are skipped, not fatal. The
+originals are never touched.
+
+The raw commands, if you'd rather drive them yourself:
+
 **Batch resize** (keeps aspect ratio):
 ```bash
 for f in src/*.jpg; do
