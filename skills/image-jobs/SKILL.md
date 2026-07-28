@@ -66,7 +66,11 @@ rembg i in.jpg out.png
 - **Report counts**: how many processed, how many skipped, and why.
 - **Show one before/after pair and wait for approval** before running a batch of 200.
 
-## Optional local UI
+## Local panel
 
-Wrap it in a single-file Python web app on `localhost:7304` — standard library only —
-where the user picks a folder and an operation and sees before/after side by side.
+```bash
+python3 scripts/ui.py        # localhost:7304
+```
+
+Pick a folder and an operation. Note that output lands in `<your folder>/out/`, next
+to the originals — not in the panel's own output folder.

@@ -64,7 +64,11 @@ Don't hand back raw JSON. Write a markdown file next to the source containing:
 - If the audio is bad enough that you're guessing often, say so at the top rather than
   handing over a confident-looking transcript that's wrong.
 
-## Optional local UI
+## Local panel
 
-Wrap it in a single-file Python web app on `localhost:7302` — standard library only —
-where the user drops a file and reads the transcript in the page.
+```bash
+python3 scripts/ui.py        # localhost:7302
+```
+
+A single-file panel: pick a file, pick a model, hit Run, watch the log, click the
+output. Standard library only. Its own app on its own port — nothing shared.
