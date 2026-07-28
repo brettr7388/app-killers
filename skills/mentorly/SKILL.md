@@ -75,6 +75,16 @@ subscription — the same data path as pasting a screenshot into the Claude app.
 telemetry, no analytics, no logging, no servers. Say so out loud in the README;
 a screen-reading tool that isn't explicit about this doesn't get installed.
 
-## Requirements
+## Requirements — and what Claude can't do for you
 
-macOS 14.2+, Xcode 15+, a Claude subscription with the Claude Code CLI signed in.
+macOS 14.2+, **full Xcode 15+**, and a Claude subscription with the Claude Code CLI
+signed in.
+
+**Claude cannot install Xcode.** It's a ~15GB Mac App Store download that needs an
+Apple ID and a manual accept — there is no CLI that fetches it. `xcode-select
+--install` gets you the Command Line Tools only, which is *not* enough here because
+this project builds through an `.xcodeproj` with `xcodebuild`.
+
+So: install Xcode from the App Store yourself first, then let Claude do everything
+after that. If Xcode is missing, say so up front rather than burning ten minutes
+discovering it at the build step.

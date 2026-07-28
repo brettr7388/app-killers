@@ -72,3 +72,16 @@ and the paste). Prompt on first launch.
 
 Typing into other applications requires a native global event tap and Accessibility
 permission. A web page can't do it. This one is a real menu bar app.
+
+## What you need to build it
+
+**Not full Xcode.** This builds with SwiftPM (`swift build -c release`), which only
+needs the **Command Line Tools**:
+
+```bash
+xcode-select --install     # ~1GB, and it opens a dialog you have to click Install on
+```
+
+Claude can run that command for you, but macOS shows a GUI prompt that a human has to
+accept — it can't be fully automated. Once the tools are in, everything else is
+scripted.

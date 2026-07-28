@@ -54,6 +54,9 @@ TOOLS = {
     "yt-dlp": (have("yt-dlp"), "downloads videos by URL", "brew install yt-dlp"),
     "claude": (have("claude"), "the whole point", "curl -fsSL https://claude.ai/install.sh | bash"),
     "node": (have("node"), "only for n8n", "brew install node"),
+    "swift": (have("swift"), "builds talk-to-type", "xcode-select --install"),
+    "xcodebuild": (os.path.exists("/Applications/Xcode.app"), "builds mentorly",
+                   "install Xcode from the Mac App Store — Claude can't do this one"),
 }
 
 # skill -> what it needs to run at all
@@ -67,8 +70,8 @@ NEEDS = {
     "recorder": ["ffmpeg", "whisper"],
     "pdf": ["pypdf"],
     "n8n-local": ["node"],
-    "mentorly": [],
-    "talk-to-type": [],
+    "mentorly": ["xcodebuild"],
+    "talk-to-type": ["swift"],
 }
 
 NATIVE = {"mentorly", "talk-to-type"}
@@ -90,7 +93,9 @@ def main():
     for skill in sorted(os.listdir(SKILLS)) if os.path.isdir(SKILLS) else []:
         missing = [t for t in NEEDS.get(skill, []) if not TOOLS.get(t, (False,))[0]]
         if skill in NATIVE:
-            print(f"  {DIM}○{OFF} {skill:<15} {DIM}builds a native app — needs Xcode{OFF}")
+            need = "full Xcode" if skill == "mentorly" else "command line tools"
+            state = f"{GREEN}ready{OFF}" if not missing else f"{RED}needs {need}{OFF}"
+            print(f"  {DIM}○{OFF} {skill:<15} {DIM}builds a native app —{OFF} {state}")
         elif missing:
             blocked += 1
             print(f"  {RED}✗{OFF} {skill:<15} needs: {', '.join(missing)}")
