@@ -36,8 +36,8 @@ Set me up with the App Killers skills.
    `python3 -m whisper`; check for that specifically.
 4. Read the SKILL.md in each skill folder and give me a short list: the skill's name,
    what it does in one line, what it replaces, and what I'd literally type to use it.
-5. Tell me which skills are ready to run right now with what's already installed, and
-   which need something installed first.
+5. Run `python3 check-setup.py` from the repo and show me the output — it lists every
+   skill and whether it's ready on this machine.
 
 Don't install anything or change any settings without asking me first. When you're
 done, ask me which one I want to try, and set that one up.
@@ -61,6 +61,9 @@ After that, just say what you want in plain English in any Claude Code session:
 | "make a documentary short about X" | `faceless-docs` |
 | "make a listing video from these photos" | `listing-videos` |
 | "set up n8n locally" | `n8n-local` |
+
+Two of the eleven (`mentorly`, `talk-to-type`) build native macOS apps instead of
+running a script — those need Xcode. The other nine run immediately.
 
 You don't have to remember skill names. Say what you want; Claude picks the skill.
 
