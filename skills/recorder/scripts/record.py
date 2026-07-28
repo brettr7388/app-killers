@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Record the screen, transcribe it locally, and build a shareable page.
 
-    python3 record.py [seconds] [--out NAME] [--no-transcript]
+    python3 record.py [seconds] [--out NAME] [--silent] [--no-transcript]
 
 Produces NAME.mp4 plus NAME.html — a self-contained page with the video, the
 transcript beside it, and clickable timestamps that seek the video. Nothing is
@@ -9,6 +9,10 @@ uploaded; both files stay on your disk.
 
 macOS only for capture (uses screencapture). Needs Screen Recording permission for
 whichever terminal you run it from.
+
+Audio note: screencapture records the DEFAULT AUDIO INPUT (your microphone), not the
+sound coming out of your speakers. No mic on the machine means a silent recording and
+an empty transcript — the script detects that and says so instead of pretending.
 """
 import html
 import json
@@ -33,10 +37,34 @@ def whisper_cmd():
     return ["whisper"] if shutil.which("whisper") else [sys.executable, "-m", "whisper"]
 
 
-def record(seconds, out_mov):
+def has_audio_input():
+    """screencapture -g records the DEFAULT INPUT (a microphone) — not system audio.
+    A machine with no mic (a Mac mini, say) has no capture device at all."""
+    r = subprocess.run(["screencapture", "-v", "-g", "-V", "1", "-x", "/tmp/_audiochk.mov"],
+                       capture_output=True, text=True)
+    ok = "No capture audio device" not in (r.stderr + r.stdout)
+    for p in ("/tmp/_audiochk.mov",):
+        if os.path.exists(p):
+            os.remove(p)
+    return ok
+
+
+def record(seconds, out_mov, want_audio=True):
     """screencapture -v records the main display. -x silences the shutter sound."""
-    print(f"[1/3] recording {seconds}s — switch to what you want to capture now", flush=True)
-    sh(["screencapture", "-v", "-V", str(seconds), "-x", out_mov])
+    cmd = ["screencapture", "-v", "-V", str(seconds), "-x"]
+
+    if want_audio:
+        if has_audio_input():
+            cmd.insert(2, "-g")          # capture the mic alongside the video
+        else:
+            want_audio = False
+            print("      ! no microphone found — recording video only, so there will\n"
+                  "        be no transcript. Plug in a mic, or narrate separately and\n"
+                  "        mux it in (see the skill's notes).", flush=True)
+
+    print(f"[1/3] recording {seconds}s{' with mic' if want_audio else ' (silent)'} "
+          f"— switch to what you want to capture now", flush=True)
+    sh(cmd + [out_mov])
     return out_mov
 
 
@@ -155,7 +183,7 @@ def main():
         print(f"[1/3] using existing capture: {os.environ['RECORD_FROM']}", flush=True)
         shutil.copy(os.environ["RECORD_FROM"], mov)
     else:
-        record(seconds, mov)
+        record(seconds, mov, want_audio="--silent" not in sys.argv)
 
     to_mp4(mov, mp4)
     segments = [] if "--no-transcript" in sys.argv else transcribe(mp4, workdir)
